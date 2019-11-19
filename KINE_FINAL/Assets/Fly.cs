@@ -37,10 +37,6 @@ public class Fly : MonoBehaviour
 
     Vector3 calcXYZDir(float xC, float yC, float zC, float xP, float yP, float zP)
     {
-        print("X:" + ((xC - xP) * scaleFactor));
-        print("Y:" + ((yC - yP) * scaleFactor));
-        print("Z:" + ((zC - zP) * scaleFactor));
-
         float x = -1 * (xC - xP) * (float)(scaleFactor);
         float y = -1 * (yC - yP) * (float)(scaleFactor);
         float z = -1 * (zC - zP) * (float)(scaleFactor);

@@ -8,7 +8,7 @@ public class Weightless : MonoBehaviour
     private SteamVR_TrackedController _controller;
     private GameObject _player;
     private Rigidbody _playerRigid;
-    private bool toggled = false;
+    private bool toggled = true;
 
     // Start is called before the first frame update
     void Start()

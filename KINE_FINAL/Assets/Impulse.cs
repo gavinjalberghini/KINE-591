@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ public class Impulse : MonoBehaviour
     private Transform _headsetTransform;
     private double scaleFactor = 15;
     private bool onePulse = false;
+    private int counter = 0;
+    private float startTime;
 
     void Start()
     {
@@ -40,10 +43,14 @@ public class Impulse : MonoBehaviour
             onePulse = true;
         } else
         {
-            onePulse = false;
-        }
-    }
+            if(Time.timeSinceLevelLoad % 10 < 0.125)
+                onePulse = false;
 
+            //Debug.Log(Time.timeSinceLevelLoad.ToString());
+        }
+
+        counter++;
+    }
     Vector3 calcXYZDir(float xC, float yC, float zC, float xP, float yP, float zP)
     {
         float x = -1 * (xC - xP) * (float)(scaleFactor);
