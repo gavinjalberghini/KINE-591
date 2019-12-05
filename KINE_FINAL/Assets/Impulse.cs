@@ -13,7 +13,7 @@ public class Impulse : MonoBehaviour
     private Transform _playerTransform;
     private GameObject _headset;
     private Transform _headsetTransform;
-    private double scaleFactor = 15;
+    private double scaleFactor = 27;
     private bool onePulse = false;
     private int counter = 0;
     private float startTime;

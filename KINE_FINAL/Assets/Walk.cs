@@ -12,8 +12,11 @@ public class Walk : MonoBehaviour
     private GameObject _player;
     private Rigidbody _playerRigid;
     private Vector3 projection;
-    private float scaleFactor = 0.15f;
+    private float scaleFactor = 0.35f;
     private float topWalkSpeed = 2.5f;
+    private float time;
+    private bool toggle = true;
+
 
     void Start()
     {
@@ -32,13 +35,10 @@ public class Walk : MonoBehaviour
         _controller = _controllerTemp.GetComponent<SteamVR_TrackedController>();
         _controllerTransform = _controller.GetComponent<Transform>();
 
-        if (_controller.padTouched && !_controller.padPressed)
+        if (_controller.padTouched)
         {
             float yRot = _controllerTransform.eulerAngles.y;
             bool accelerate = true;
-
-            Debug.Log("X: " + _playerRigid.velocity.x);
-            Debug.Log("Z: " + _playerRigid.velocity.z);
 
             if (Mathf.Abs(_playerRigid.velocity.x) > topWalkSpeed)
             {
@@ -68,6 +68,16 @@ public class Walk : MonoBehaviour
                 _playerRigid.AddForce(projection, ForceMode.Impulse);
             }
 
+            if(_controller.padPressed && toggle)
+            {
+                projection = new Vector3(0, 7.5f, 0);
+                _playerRigid.AddForce(projection, ForceMode.Impulse);
+                toggle = false;
+                time = Time.timeSinceLevelLoad;
+            }
+
+            if (!_controller.padPressed && !toggle && Time.timeSinceLevelLoad - time > 2f)
+                toggle = true;
         }
     }
 }
