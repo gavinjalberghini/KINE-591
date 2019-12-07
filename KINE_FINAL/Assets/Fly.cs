@@ -14,7 +14,7 @@ public class Fly : MonoBehaviour
     private Transform _playerTransform;
     private GameObject _headset;
     private Transform _headsetTransform;
-    private double scaleFactor = 0.35;
+    private double scaleFactor = 0.15;
 
     void Start()
     {

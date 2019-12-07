@@ -12,7 +12,7 @@ public class Walk : MonoBehaviour
     private GameObject _player;
     private Rigidbody _playerRigid;
     private Vector3 projection;
-    private float scaleFactor = 0.35f;
+    private float scaleFactor = 0.45f;
     private float topWalkSpeed = 2.5f;
     private float time;
     private bool toggle = true;
@@ -42,23 +42,11 @@ public class Walk : MonoBehaviour
 
             if (Mathf.Abs(_playerRigid.velocity.x) > topWalkSpeed)
             {
-                if(_playerRigid.velocity.x < 0)
-                    projection = new Vector3(-topWalkSpeed, _playerRigid.velocity.y, _playerRigid.velocity.z);
-                else
-                    projection = new Vector3(topWalkSpeed, _playerRigid.velocity.y, _playerRigid.velocity.z);
-
-                _playerRigid.velocity = projection;
                 accelerate = false;
             }
 
             if (Mathf.Abs(_playerRigid.velocity.z) > topWalkSpeed)
             {
-                if (_playerRigid.velocity.z < 0)
-                    projection = new Vector3(_playerRigid.velocity.x, _playerRigid.velocity.y, -topWalkSpeed);
-                else
-                    projection = new Vector3(_playerRigid.velocity.x, _playerRigid.velocity.y, topWalkSpeed);
-
-                _playerRigid.velocity = projection;
                 accelerate = false;
             }
 
