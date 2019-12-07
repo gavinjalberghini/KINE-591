@@ -21,8 +21,6 @@ public class ColliderPosition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 pos = new Vector3(_headsetTransform.transform.position.x, _playerCol.transform.position.y, _headsetTransform.transform.position.z);
-        Quaternion rot = new Quaternion(0, 0, 0, 0);
-        _playerCol.transform.SetPositionAndRotation(pos, rot);
+        
     }
 }
