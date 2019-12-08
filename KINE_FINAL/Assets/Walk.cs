@@ -16,6 +16,7 @@ public class Walk : MonoBehaviour
     private float topWalkSpeed = 2.5f;
     private float time;
     private bool toggle = true;
+    private GameObject gear;
 
 
     void Start()
@@ -25,6 +26,7 @@ public class Walk : MonoBehaviour
         _controllerTemp = GameObject.Find("Player/[CameraRig]/Controller (left)");
         _controller = _controllerTemp.GetComponent<SteamVR_TrackedController>();
         _controllerTransform = _controller.GetComponent<Transform>();
+        gear = GameObject.FindWithTag("FJG");
     }
 
     // Update is called once per frame
@@ -56,7 +58,7 @@ public class Walk : MonoBehaviour
                 _playerRigid.AddForce(projection, ForceMode.Impulse);
             }
 
-            if(_controller.padPressed && toggle)
+            if(_controller.padPressed && toggle && gear.GetComponent<MeshRenderer>().enabled == true)
             {
                 projection = new Vector3(0, 7.5f, 0);
                 _playerRigid.AddForce(projection, ForceMode.Impulse);

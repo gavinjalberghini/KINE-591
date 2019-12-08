@@ -17,6 +17,7 @@ public class Impulse : MonoBehaviour
     private bool onePulse = false;
     private int counter = 0;
     private float startTime;
+    private GameObject gear;
 
     void Start()
     {
@@ -27,12 +28,13 @@ public class Impulse : MonoBehaviour
         _playerTransform = _player.GetComponent<Transform>();
         _headset = GameObject.FindWithTag("MainCamera");
         _headsetTransform = _headset.GetComponent<Transform>();
+        gear = GameObject.FindWithTag("FIG");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_controller.menuPressed)
+        if (_controller.menuPressed && gear.GetComponent<MeshRenderer>().enabled == true)
         {
             if (!onePulse)
             {

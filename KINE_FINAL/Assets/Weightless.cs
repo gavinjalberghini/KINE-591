@@ -9,6 +9,7 @@ public class Weightless : MonoBehaviour
     private GameObject _player;
     private Rigidbody _playerRigid;
     private bool toggled = true;
+    private GameObject gear;
 
     // Start is called before the first frame update
     void Start()
@@ -17,13 +18,14 @@ public class Weightless : MonoBehaviour
         _controller = GetComponent<SteamVR_TrackedController>();
         _player = GameObject.Find("/Player");
         _playerRigid = _player.GetComponent<Rigidbody>();
+        gear = GameObject.FindWithTag("FZGG");
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_controller.gripped)
+        if (_controller.gripped && gear.GetComponent<MeshRenderer>().enabled == true)
         {
             if (!toggled)
             {

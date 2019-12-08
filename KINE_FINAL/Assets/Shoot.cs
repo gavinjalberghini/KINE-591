@@ -10,6 +10,7 @@ public class Shoot : MonoBehaviour
     private Transform _controllerTransform;
     private bool toggle = true;
     private float time;
+    private GameObject gear;
 
     // Start is called before the first frame update
     void Start()
@@ -17,11 +18,12 @@ public class Shoot : MonoBehaviour
         //prefab = Resources.Load("Projectile") as GameObject;
         _controller = GetComponent<SteamVR_TrackedController>();
         _controllerTransform = GetComponent<Transform>();
+        gear = GameObject.FindWithTag("FSG");
     }
 
     private void Update()
     {
-        if (_controller.triggerPressed && toggle)
+        if (_controller.triggerPressed && toggle && gear.GetComponent<MeshRenderer>().enabled == true)
         {
             GameObject projectile = Instantiate(prefab) as GameObject;
             projectile.transform.position = _controllerTransform.position + _controllerTransform.transform.forward / 4;

@@ -6,6 +6,18 @@ TagManager:
   tags:
   - Left
   - Right
+  - JG
+  - IG
+  - FG
+  - SG
+  - ZGG
+  - FJG
+  - FIG
+  - FFG
+  - FSG
+  - FZGG
+  - FSIG
+  - SIG
   layers:
   - Default
   - TransparentFX

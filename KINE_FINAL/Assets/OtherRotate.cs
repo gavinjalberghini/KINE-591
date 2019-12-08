@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rotate : MonoBehaviour
+public class OtherRotate : MonoBehaviour
 {
     private Transform transform;
 
@@ -15,6 +15,6 @@ public class Rotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, 0, 1);
+        transform.Rotate(0, 0, -1);
     }
 }

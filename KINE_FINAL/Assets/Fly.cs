@@ -15,6 +15,7 @@ public class Fly : MonoBehaviour
     private GameObject _headset;
     private Transform _headsetTransform;
     private double scaleFactor = 0.15;
+    private GameObject gear;
 
     void Start()
     {
@@ -27,12 +28,14 @@ public class Fly : MonoBehaviour
         _headsetTransform = _headset.GetComponent<Transform>();
         _controllerLeft = GameObject.Find("Player/[CameraRig]/Controller (left)");
         _controllerLeftTransform = _controllerLeft.GetComponent<Transform>();
+        gear = GameObject.FindWithTag("FFG");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_controller.padPressed)
+
+        if (_controller.padPressed && gear.GetComponent<MeshRenderer>().enabled == true)
         {
             Vector3 projection = calcXYZDir(_controllerTransform.position.x, _controllerTransform.position.y, _controllerTransform.position.z, _headsetTransform.position.x, _headsetTransform.position.y, _headsetTransform.position.z);
             _playerRigid.AddForce(projection, ForceMode.Impulse);
